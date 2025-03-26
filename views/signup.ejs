@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>Signup</title>
+        <%- include('./partials/style.ejs') %>
+    </head>
+
+    <body>
+
+        <%- include('./partials/topbar.ejs') %>
+
+        <div class="signup-container">
+            <h2>Signup</h2>
+
+            <% if (message) { %>
+                <p class="error-message"><%= message %></p>
+            <% } %>
+
+            <form method="POST" action="/register">
+                <input type="text" name="name" placeholder="Enter your name" required />
+                <input type="email" name="email" placeholder="Enter your email" required />
+                <input type="password" name="password" placeholder="Enter your password" required />
+                <input type="submit" value="Signup" />
+            </form>
+        </div>
+
+    </body>
+</html>

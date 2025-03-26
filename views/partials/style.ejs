@@ -1,0 +1,280 @@
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Body Styling */
+body {
+    background-color: #f4f4f4;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* Top Bar */
+.top-bar {
+    width: 100%;
+    background-color: #222;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+/* Navigation Tabs */
+.tabs {
+    display: flex;
+    gap: 15px;
+}
+
+.tab {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    background-color: #444;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.tab:hover {
+    background-color: #666;
+}
+
+/* Logout Button */
+.logoutButton {
+    background-color: red;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.logoutButton:hover {
+    background-color: darkred;
+}
+
+/* Blog Section */
+.add-button {
+    display: inline-block;
+    background-color: #007bff;
+    width: 150px; /* Set a reasonable width */
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background 0.3s;
+    margin-top: 70px; /* Adjust this to avoid overlap with fixed top-bar */
+    margin-bottom: 10px; /* Small space between button and blogs */
+    position: relative; /* Prevents unnecessary centering */
+}
+
+.add-button:hover {
+    background-color: #0056b3;
+}
+
+.blog-card {
+    width: 95%;
+    margin-top: 10px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.blog-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.blog-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.blog-body {
+    margin-bottom: 15px;
+}
+
+.blog-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Blog Form */
+.blog-form {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    width: 80%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.container{
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+
+.search-box{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 50px;
+    
+
+}
+input, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button.primary {
+    background-color: #28a745;
+    color: white;
+    transition: background 0.3s;
+}
+
+button.primary:hover {
+    background-color: #218838;
+}
+
+button.secondary {
+    background-color: #dc3545;
+    color: white;
+    transition: background 0.3s;
+}
+
+button.secondary:hover {
+    background-color: #c82333;
+}
+
+/* Signup Container */
+.signup-container {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    width: 350px;
+    text-align: center;
+    margin-top: 80px;
+}
+
+/* Signup Heading */
+.signup-container h2 {
+    margin-bottom: 20px;
+    color: #444;
+}
+
+/* Input Fields */
+.signup-container input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+/* Submit Button */
+.signup-container input[type="submit"] {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+
+.signup-container input[type="submit"]:hover {
+    background-color: #218838;
+}
+
+/* Error Message */
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .top-bar {
+        flex-direction: column;
+        text-align: center;
+        padding: 10px;
+    }
+    
+    .tabs {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .blog-form, .signup-container {
+        width: 90%;
+    }
+
+    .add-button {
+        width: 90%;
+    }
+
+    .blog-card {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .top-bar {
+        padding: 8px;
+    }
+
+    .tab, .logoutButton {
+        padding: 8px 12px;
+    }
+
+    .signup-container {
+        width: 95%;
+        padding: 20px;
+    }
+}
+
+.pagination{
+    margin-top: 15px;
+}
+
+</style>

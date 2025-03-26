@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <%- include('./partials/style.ejs') %>
+    </head>
+    <body>
+        <%- include('./partials/topbar.ejs') %>
+        <h2>Add Blog</h2>
+        <form method="POST" action="/createblog" class="blog-form">
+            <input type="text" name="title" placeholder="Enter Title here ..."></input>
+            <br /><br />
+            <textarea name="body" placeholder="enter your blog here " rows="30"></textarea>
+            <br /><br />
+            <input class="add-button" type="submit" value="Add" />
+            <% if(message) {%>
+                <%= message %>
+            <%}%>
+        </form>
+        
+
+
+
+
+
+    </body>
+</html>

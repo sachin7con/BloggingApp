@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <%- include('./partials/style.ejs') %>
+    </head>
+    <body>
+        <%- include('./partials/topbar.ejs') %>
+        <a class="add-button" href="addblog">Add blog</a>
+
+        <% if (blogData && blogData.length > 0) { %>
+            <% for (let i = 0; i < blogData.length; i++) { %>
+                <div class="blog-card">
+                    <div class="blog-title"><%= blogData[i].title %></div>
+                <div class="blog-body"><%= blogData[i].body.substring(0, 100) %>...</div>
+
+                <div class="blog-actions">
+                    <a class="edit-button" href="/editblog?id=<%= blogData[i]._id %>">Edit</a>
+                        <a class="delete-button" href="deleteblog?id=<%= blogData[i].id %>">Delete</a>
+                </div>
+                
+                
+                </div>
+            <% } %>
+        <% } else { %>
+            <p>No blogs found.</p>
+        <% } %>
+
+
+
+
+
+    </body>
+</html>

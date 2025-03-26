@@ -1,0 +1,46 @@
+<html>
+    <head><title>Home</title>
+        <%- include('./partials/style.ejs') %></head>
+
+    <body>
+        <div class="container">
+        <div class="sort-blogs">
+            <label for="sort">Sort by</label>
+            <select name="sort" onchange="window.location.href='/?page=1&sort='+this.value">
+                <option value="createdAt" <% if (sort === 'createdAt') { %> selected <% } %>>Date</option>
+                <option value="title" <% if (sort === 'title') { %> selected <% } %>>Title</option>
+            </select>
+        </div>
+
+        <form action="/" method="GET" class="search-box">
+            <input type="text" name="search" placeholder="Search blogs..." value="<%= search || '' %>">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+        
+    
+
+        <%- include('./partials/topbar.ejs') %>
+        
+        <% if (blogData && blogData.length > 0) { %>
+            <% for (let i = 0; i < blogData.length; i++) { %>
+                <div class="blog-card">
+                    <div class="blog-title"><%= blogData[i].title %></div>
+                <div class="blog-body"><%= blogData[i].body.substring(0, 100) %>...</div>
+
+                
+                
+                </div>
+            <% } %>
+        <% } else { %>
+            <p>No blogs found.</p>
+        <% } %>
+
+        <div class="pagination">
+            <% for(let i=1; i<= pages; i++) { %>
+                <a href="/?page=<%=i%>" <% if( i == current) { %> class="activePage" <% } %> > <%=i%> </a>
+            <% }  %>
+        </div>
+
+    </body>
+</html>
