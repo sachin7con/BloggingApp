@@ -13,7 +13,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     min-height: 100vh;
 }
 
@@ -32,129 +31,54 @@ body {
     z-index: 1000;
 }
 
-/* Navigation Tabs */
-.tabs {
-    display: flex;
-    gap: 15px;
-}
-
-.tab {
-    color: white;
-    text-decoration: none;
-    padding: 10px 15px;
-    background-color: #444;
-    border-radius: 5px;
-    transition: background 0.3s;
-}
-
-.tab:hover {
-    background-color: #666;
-}
-
-/* Logout Button */
-.logoutButton {
-    background-color: red;
-    color: white;
-    padding: 10px 15px;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background 0.3s;
-}
-
-.logoutButton:hover {
-    background-color: darkred;
-}
-
-/* Blog Section */
-.add-button {
-    display: inline-block;
-    background-color: #007bff;
-    width: 150px; /* Set a reasonable width */
-    text-align: center;
-    text-decoration: none;
-    color: #fff;
-    padding: 10px;
-    border-radius: 5px;
-    transition: background 0.3s;
-    margin-top: 70px; /* Adjust this to avoid overlap with fixed top-bar */
-    margin-bottom: 10px; /* Small space between button and blogs */
-    position: relative; /* Prevents unnecessary centering */
-}
-
-.add-button:hover {
-    background-color: #0056b3;
-}
-
-.blog-card {
-    width: 95%;
-    margin-top: 10px auto;
+/* Main Content Area */
+.main-content {
+    width: 100%;
+    margin-top: 70px; /* Adjust this value to match the height of .top-bar */
     padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
 }
 
-.blog-card:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.blog-title {
-    font-size: 1.5em;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.blog-body {
-    margin-bottom: 15px;
-}
-
-.blog-actions {
+/* Controls Container */
+.controls-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 20px;
 }
 
-/* Blog Form */
-.blog-form {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    padding: 20px;
-    width: 80%;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    margin-top: 20px;
-}
-
-.container{
+/* Sort Blogs */
+.sort-blogs {
     display: flex;
-    justify-content: space-between;
-    
+    align-items: center;
+    gap: 10px;
 }
 
-
-.search-box{
+/* Search Box */
+.search-box {
     display: flex;
-    justify-content: space-between;
-    margin-left: 50px;
-    
-
+    align-items: center;
+    gap: 10px;
 }
-input, textarea {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 16px;
-    box-sizing: border-box;
+
+/* Input and Select Styling */
+input, select {
+    padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     outline: none;
 }
 
-textarea {
-    resize: vertical;
-    min-height: 100px;
+/* Button Styling */
+.tab{
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    background-color: #404040;
+    color: #FFFFFF;
+    transition: background 0.3s;
 }
-
 button {
     padding: 10px 15px;
     border: none;
@@ -168,6 +92,16 @@ button.primary {
     color: white;
     transition: background 0.3s;
 }
+.logoutButton {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    background-color: #dc3545;
+    color: white;
+    transition: background 0.3s;
+}
 
 button.primary:hover {
     background-color: #218838;
@@ -178,57 +112,61 @@ button.secondary {
     color: white;
     transition: background 0.3s;
 }
+.logsign{
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 25px;
+    color:#ddd;
+    margin-bottom: 5px;
+
+}
+
+
 
 button.secondary:hover {
     background-color: #c82333;
 }
-
-/* Signup Container */
-.signup-container {
-    background: white;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    width: 350px;
-    text-align: center;
-    margin-top: 80px;
-}
-
-/* Signup Heading */
-.signup-container h2 {
-    margin-bottom: 20px;
-    color: #444;
-}
-
-/* Input Fields */
-.signup-container input {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    outline: none;
-}
-
-/* Submit Button */
-.signup-container input[type="submit"] {
-    background-color: #28a745;
+.submit{
+    background-color:#007bff;
     color: white;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
     transition: background 0.3s;
-}
 
-.signup-container input[type="submit"]:hover {
-    background-color: #218838;
 }
-
-/* Error Message */
-.error-message {
-    color: red;
-    font-size: 14px;
-    margin-bottom: 10px;
+.submit:hover{
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: translateY(-1px);
+}
+/* Blog Card */
+.blog-card {
+    width: 90%;
+    margin: 0 auto 20px auto; /* Added spacing between cards */
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    word-wrap: break-word;
+    display: flex;
+    flex-direction: column;
+}
+.blog-body {
+    max-height: none; /* Remove height limit */
+    overflow: visible; /* Allow full content to be visible */
+    text-overflow: clip; /* Ensure text is fully visible */
+    white-space: normal; /* Ensures text wraps properly */
+    word-wrap: break-word; /* Prevents overflow */
+}
+.blog-content p {
+    margin: 0;
+    line-height: 1.5; /* Improve readability */
+}
+.blog-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.blog-content {
+    max-height: 150px; /* Limit height for consistency */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal; /* Prevents text from going out */
 }
 
 /* Responsive Design */
@@ -239,23 +177,99 @@ button.secondary:hover {
         padding: 10px;
     }
     
-    .tabs {
-        flex-wrap: wrap;
-        justify-content: center;
+    .controls-container {
+        flex-direction: column;
+        align-items: stretch;
         gap: 10px;
     }
 
-    .blog-form, .signup-container {
-        width: 90%;
-    }
+    
+}
+.sign{
+    text-align: right;
+    font-size: larger;
+    margin-right: 25px;
+}
 
-    .add-button {
-        width: 90%;
-    }
+.signup-container{
+    background-color: #008080;
+    width: 25%;
+    height: 65%;
+    text-align: center;
+    margin-left: 40%;
+    margin-top: 10%;
+    align-items: center;
+    padding: 10px;
+    border-radius: 8px;
 
-    .blog-card {
-        width: 100%;
-    }
+}
+.pagination{
+    margin-top: 15px;
+    margin-left: 48%;
+    text-decoration: none;
+}
+.blog-actions{
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.blog-form-container {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 600px;
+}
+
+.blog-form-container input[type="text"],
+.blog-form-container textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.blog-form-container input[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+
+.blog-form-container input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.add-button{
+
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    background-color: #28a745;
+    color: white;
+    transition: background 0.3s;
+
+
+}
+.activePage{
+    background-color: #4CAF50;
+    color: white;
+    border: 1px solid #4CAF50;
+}
+.user-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: 0 auto;
 }
 
 @media screen and (max-width: 480px) {
@@ -263,18 +277,15 @@ button.secondary:hover {
         padding: 8px;
     }
 
-    .tab, .logoutButton {
-        padding: 8px 12px;
-    }
-
-    .signup-container {
-        width: 95%;
-        padding: 20px;
+    .controls-container {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
     }
 }
-
-.pagination{
-    margin-top: 15px;
+@media screen and (min-width: 1024px) {
+  .blog-card {
+    max-width: 800px;
+  }
 }
-
 </style>

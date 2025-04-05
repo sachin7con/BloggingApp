@@ -5,6 +5,9 @@
     </head>
     <body>
         <%- include('./partials/topbar.ejs') %>
+        <div class="main-content">
+        <div class="blog-form-container">
+
         <h2>Edit blog</h2>
         <form method="POST" action="/updateblog" class="blog-form">
             <input type="hidden" name="id" value="<%= blogData._id %>">
@@ -22,6 +25,7 @@
 
 
 
-
+        </div>
+    </div>
     </body>
 </html>

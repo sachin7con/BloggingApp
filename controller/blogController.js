@@ -1,40 +1,42 @@
 const Blogs = require("../Models/blogs")
-
 const home = async (req, res) => {
-        
-    try{
+    try {
         const perPage = 5;
-        const page = req.query.page || 1 ;
-        const sort = req.query.sort || "title";
+        const page = parseInt(req.query.page) || 1;
+        const validSortFields = ['title', 'createdAt']; // Add other valid fields as needed
+        const sortField = validSortFields.includes(req.query.sort) ? req.query.sort : 'title';
         const search = req.query.search || "";
-          
+
         let filter = {};
-        if(search){
+        if (search.trim()) {
             filter = {
                 $or: [
-                    { title: { $regex: search, $options: "i" } },  // Search in title (case-insensitive)
-                    { body: { $regex: search, $options: "i" } }    // Search in body (case-insensitive)
+                    { title: { $regex: search, $options: "i" } },
+                    { body: { $regex: search, $options: "i" } }
                 ]
             };
         }
-    
-        
 
         const blogs = await Blogs.find(filter)
-        .sort( {[sort]: 1 })
-        .skip((perPage * page) - perPage)
-        .limit(perPage);
-        
+            .sort({ [sortField]: 1 })
+            .skip((perPage * (page - 1)))
+            .limit(perPage);
+
         const count = await Blogs.countDocuments(filter);
         const totalPages = Math.ceil(count / perPage);
-        res.render('home', {message: null, blogData: blogs, pages: totalPages, current: page, sort: sort, search: search })
+        res.render('home', {
+            message: null,
+            blogData: blogs,
+            pages: totalPages,
+            current: page,
+            sort: sortField,
+            search: search
+        });
+    } catch (error) {
+        console.error("Error fetching blogs:", error);
+        res.render('home', { message: "An error occurred while fetching blogs.", blogData: [] });
     }
-    catch(error){
-        res.render('home', {message: null, blogData: null})
-    }
-
-    
-}
+};
 
 const myblogs = async (req, res) => {
     const userId = req.session.userId;
@@ -71,12 +73,12 @@ const deleteblog = (req, res) => {
             res.redirect('/myblogs')
         })
         .catch(err => {
-            console.log(error)
+            res.render('myblogs', { message: "Failed to delete blog, please try later." });
         })
 
     }
     catch(error){
-        console.log(error)
+        res.render('myblogs', { message: "Failed to delete blog, please try later." });
     }
 }
 

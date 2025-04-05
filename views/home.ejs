@@ -3,20 +3,30 @@
         <%- include('./partials/style.ejs') %></head>
 
     <body>
-        <div class="container">
-        <div class="sort-blogs">
-            <label for="sort">Sort by</label>
-            <select name="sort" onchange="window.location.href='/?page=1&sort='+this.value">
-                <option value="createdAt" <% if (sort === 'createdAt') { %> selected <% } %>>Date</option>
-                <option value="title" <% if (sort === 'title') { %> selected <% } %>>Title</option>
-            </select>
-        </div>
-
-        <form action="/" method="GET" class="search-box">
-            <input type="text" name="search" placeholder="Search blogs..." value="<%= search || '' %>">
-            <button type="submit">Search</button>
-        </form>
-    </div>
+        
+<script>
+    function changeSort() {
+        const selectedSort = document.getElementById('sort').value;
+        const urlParams = new URLSearchParams(window.location.search);
+        urlParams.set('sort', selectedSort);
+        window.location.href = `/?${urlParams.toString()}`;
+    }
+</script>
+        <div class="main-content">
+            <div class="controls-container">
+                <div class="sort-blogs">
+                    <label for="sort">Sort by:</label>
+                    <select name="sort" id="sort" onchange="changeSort()">
+                        <option value="createdAt" <% if (sort === 'createdAt') { %> selected <% } %>>Date</option>
+                        <option value="title" <% if (sort === 'title') { %> selected <% } %>>Title</option>
+                    </select>
+                </div>
+        
+                <form action="/" method="GET" class="search-box">
+                    <input type="text" name="search" placeholder="Search blogs...">
+                    <button type="submit" class="primary">Search</button>
+                </form>
+            </div>
         
     
 
@@ -25,8 +35,9 @@
         <% if (blogData && blogData.length > 0) { %>
             <% for (let i = 0; i < blogData.length; i++) { %>
                 <div class="blog-card">
-                    <div class="blog-title"><%= blogData[i].title %></div>
-                <div class="blog-body"><%= blogData[i].body.substring(0, 100) %>...</div>
+                    <div name="title" class="blog-title"><strong><%= blogData[i].title %></strong></div><br/>
+                <div name="body" class="blog-body"><%= blogData[i].body  %>...</div>
+                
 
                 
                 
@@ -38,9 +49,8 @@
 
         <div class="pagination">
             <% for(let i=1; i<= pages; i++) { %>
-                <a href="/?page=<%=i%>" <% if( i == current) { %> class="activePage" <% } %> > <%=i%> </a>
+                <a href="/?page=<%=i%>&sort=<%=sort%>&search=<%=search%>" <% if( i == current) { %> class="activePage" <% } %> > <%=i%> </a>
             <% }  %>
         </div>
-
     </body>
 </html>

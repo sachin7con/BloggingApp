@@ -4,19 +4,25 @@
     </head>
 
     <body>
+        
         <%- include('./partials/topbar.ejs') %>
+        
+        <div class="main-content">
+            <div class="sign"><a href="/signup">Signup</a></div>
         <div class="signup-container">
-            <h2>Login</h2>
+            <div class="logsign">Login
+            </div>
         <form method="POST" action="http://localhost:3000/login" class="user-form">
             <% if(message) {%>
                 <%= message %>
-            <%}%>
+            <%}%><br/>
             <input type="text" name="email" placeholder="Enter your email"/>
             <br /><br />
             <input type="password" name="password" placeholder="Enter your password"/>
             <br /><br />
-            <input type="submit" value="submit"/>
+            <input type="submit" value="submit" class="submit"/>
         </form>
     </div>
+</div>
     </body>
 </html>

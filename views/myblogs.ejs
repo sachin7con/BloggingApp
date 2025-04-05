@@ -5,6 +5,8 @@
     </head>
     <body>
         <%- include('./partials/topbar.ejs') %>
+        <div class="main-content">
+
         <a class="add-button" href="addblog">Add blog</a>
 
         <% if (blogData && blogData.length > 0) { %>
@@ -28,6 +30,6 @@
 
 
 
-
+        </div>
     </body>
 </html>

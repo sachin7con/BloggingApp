@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema
 
 const blogSchema = new Schema({
+    
     title :{
         type: String, 
         required : true
@@ -15,7 +16,7 @@ const blogSchema = new Schema({
         required : true
     }
 
-},{timestamps: true } )
+}, {timestamps: true } )
 
 const Blogs = mongoose.model('Blogs', blogSchema)
 
