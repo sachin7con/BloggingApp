@@ -1,5 +1,5 @@
 
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const base64 = require('base-64');
 const Users = require('../Models/Users.js')
 
