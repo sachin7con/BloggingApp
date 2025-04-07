@@ -1,6 +1,7 @@
 // SGN , JSLN, JMD, JSVM, JSSR, JBB, JSRK, JSM, JSRK, JSLN 
 const Blogs = require('./Models/blogs.js');
-require('dotenv').config();
+const dotenv = require('dotenv');
+dotenv.config();
 const express = require('express');
 const mongoose = require('mongoose');
 const {  signup, loginPage, register, login, allusers, logout } = require('./controller/userController.js')
@@ -10,7 +11,7 @@ const Users = require('./Models/Users.js');
 const {requireAuth, checAuth} = require('./utils/auth.js');
 const {home, myblogs, addblog, createblog, deleteblog, editblog, updateblog } = require('./controller/blogController.js')
 
-
+const PORT = process.env.PORT || 3000;
 const app = express();
 app.use(express.json())
 app.use(session({
@@ -57,5 +58,6 @@ app.post('/updateblog', updateblog);
 
 
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
